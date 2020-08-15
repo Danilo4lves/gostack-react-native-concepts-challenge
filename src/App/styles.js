@@ -6,7 +6,9 @@ export const StatusBar = styled.StatusBar.attrs({
   backgroundColor: "#7159c1",
 })``;
 
-export const Container = styled.SafeAreaView`
+export const SafeAreaView = styled.SafeAreaView``;
+
+export const List = styled.FlatList`
   flex: 1;
 
   background-color: #7159c1;
