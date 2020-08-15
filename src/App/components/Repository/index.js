@@ -7,7 +7,7 @@ import RepositoryPresentational from "./presentational";
 function Repository(props) {
   const { id, title, techs, likes } = props;
 
-  async function handleLikeRepository(id) {
+  async function handleLikeRepository() {
     // Implement "Like Repository" functionality
   }
 
@@ -21,4 +21,4 @@ function Repository(props) {
   });
 }
 
-export default RepositoryPresentational;
+export default Repository;
