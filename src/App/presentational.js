@@ -16,37 +16,45 @@ import {
 } from "./styles";
 
 function AppPresentational(props) {
-  const { handleLikeRepository } = props;
+  const {
+    repositories,
+
+    handleLikeRepository,
+  } = props;
 
   return (
     <>
       <StatusBar />
+
       <Container>
-        <RepositoryContainer>
-          <RepositoryName>Repository 1</RepositoryName>
+        {repositories?.map((repository) => {
+          const { id, title, techs, likes } = repository;
 
-          <TechsContainer>
-            <TechBadge>ReactJS</TechBadge>
-            <TechBadge>Node.js</TechBadge>
-          </TechsContainer>
+          return (
+            <RepositoryContainer key={id}>
+              <RepositoryName>{title}</RepositoryName>
 
-          <LikesContainer>
-            <HowManyLikesText
-              // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
-              testID={`repository-likes-1`}
-            >
-              3 curtidas
-            </HowManyLikesText>
-          </LikesContainer>
+              <TechsContainer>
+                {techs?.map((tech) => (
+                  <TechBadge key={tech}>{tech}</TechBadge>
+                ))}
+              </TechsContainer>
 
-          <Button
-            onPress={() => handleLikeRepository(1)}
-            // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
-            testID={`like-button-1`}
-          >
-            <ButtonText>Curtir</ButtonText>
-          </Button>
-        </RepositoryContainer>
+              <LikesContainer>
+                <HowManyLikesText testID={`repository-likes-${id}`}>
+                  {likes} curtidas
+                </HowManyLikesText>
+              </LikesContainer>
+
+              <Button
+                onPress={() => handleLikeRepository(id)}
+                testID={`like-button-${id}`}
+              >
+                <ButtonText>Curtir</ButtonText>
+              </Button>
+            </RepositoryContainer>
+          );
+        })}
       </Container>
     </>
   );
