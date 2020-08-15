@@ -26,14 +26,8 @@ function App() {
     fetchRepositories();
   }, []);
 
-  async function handleLikeRepository(id) {
-    // Implement "Like Repository" functionality
-  }
-
   return React.createElement(AppPresentational, {
     repositories,
-
-    handleLikeRepository,
   });
 }
 

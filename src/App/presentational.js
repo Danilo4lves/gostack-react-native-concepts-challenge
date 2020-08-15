@@ -1,26 +1,15 @@
 // Dependencies
 import React from "react";
+import { Text } from "react-native";
+
+// Components
+import { Repository } from "./components";
 
 // Styled components
-import {
-  StatusBar,
-  Container,
-  RepositoryContainer,
-  RepositoryName,
-  TechsContainer,
-  TechBadge,
-  LikesContainer,
-  HowManyLikesText,
-  Button,
-  ButtonText,
-} from "./styles";
+import { StatusBar, Container } from "./styles";
 
 function AppPresentational(props) {
-  const {
-    repositories,
-
-    handleLikeRepository,
-  } = props;
+  const { repositories } = props;
 
   return (
     <>
@@ -31,28 +20,13 @@ function AppPresentational(props) {
           const { id, title, techs, likes } = repository;
 
           return (
-            <RepositoryContainer key={id}>
-              <RepositoryName>{title}</RepositoryName>
-
-              <TechsContainer>
-                {techs?.map((tech) => (
-                  <TechBadge key={tech}>{tech}</TechBadge>
-                ))}
-              </TechsContainer>
-
-              <LikesContainer>
-                <HowManyLikesText testID={`repository-likes-${id}`}>
-                  {likes} curtidas
-                </HowManyLikesText>
-              </LikesContainer>
-
-              <Button
-                onPress={() => handleLikeRepository(id)}
-                testID={`like-button-${id}`}
-              >
-                <ButtonText>Curtir</ButtonText>
-              </Button>
-            </RepositoryContainer>
+            <Repository
+              key={id}
+              id={id}
+              title={title}
+              techs={techs}
+              likes={likes}
+            />
           );
         })}
       </Container>
