@@ -5,11 +5,19 @@ import React from "react";
 import RepositoryPresentational from "./presentational";
 
 function Repository(props) {
-  const { id, title, techs, likes } = props;
+  const {
+    id,
+    title,
+    techs,
+    likes,
+    handleLikeRepository: handleLikeRepositoryFromProps,
+  } = props;
 
-  async function handleLikeRepository() {
-    // Implement "Like Repository" functionality
-  }
+  const handleLikeRepository = React.useCallback(() => {
+    if (handleLikeRepositoryFromProps) {
+      handleLikeRepositoryFromProps(id);
+    }
+  }, [handleLikeRepositoryFromProps]);
 
   return React.createElement(RepositoryPresentational, {
     id,
