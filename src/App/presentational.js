@@ -1,11 +1,12 @@
 // Dependencies
 import React from "react";
+import { FlatList } from "react-native";
 
 // Components
 import { Repository } from "./components";
 
 // Styled components
-import { StatusBar, SafeAreaView, List } from "./styles";
+import { StatusBar, Container } from "./styles";
 
 function AppPresentational(props) {
   const { repositories } = props;
@@ -23,13 +24,13 @@ function AppPresentational(props) {
     <>
       <StatusBar />
 
-      <SafeAreaView>
-        <List
+      <Container>
+        <FlatList
           data={repositories}
           keyExtractor={(repository) => repository?.id}
           renderItem={renderRepository}
         />
-      </SafeAreaView>
+      </Container>
     </>
   );
 }
